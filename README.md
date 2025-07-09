@@ -6,3 +6,8 @@ The Pacific  HURDAT2 file was downloaede from https://www.nhc.noaa.gov/data/hurd
 ```bash
 ./split.sh hurdat2-nepac-1949-2024-031725.txt
 ```
+
+
+```bash
+./txt2kml.sh
+```
