@@ -1,11 +1,12 @@
 import os
 import sys
 import argparse
-
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
+from read_hurricane_data import read_hurricane_data
+
 
 def parse_hurdat2_track(fname):
     lats, lons = [], []
@@ -29,11 +30,9 @@ def main():
 
     fname = args.track_file
     base, _ = os.path.splitext(os.path.basename(fname))
-    lats, lons = parse_hurdat2_track(fname)
-    if not lats:
-        print(f"No track points found in {fname}", file=sys.stderr)
-        sys.exit(1)
-
+    df = read_hurricane_data(fname)
+    lats = df["lat"].to_numpy()
+    lons = df["lon"].to_numpy()
     proj = ccrs.PlateCarree()
     fig = plt.figure(figsize=(8, 6))
     ax = fig.add_subplot(1, 1, 1, projection=proj)
@@ -70,7 +69,7 @@ def main():
 
     # save files
     for ext in ('png', 'pdf'):
-        plt.savefig(f"{base}.{ext}", dpi=300, bbox_inches='tight')
+        plt.savefig(f"plot/{base}.{ext}", dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 if __name__ == "__main__":
