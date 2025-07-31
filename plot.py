@@ -69,6 +69,7 @@ def main():
 
     # save files
     for ext in ('png', 'pdf'):
+        print(f"save plot/{base}.{ext}") 
         plt.savefig(f"plot/{base}.{ext}", dpi=300, bbox_inches='tight')
     plt.close(fig)
 

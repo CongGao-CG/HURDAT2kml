@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
+
 def main():
     # 1) build global 0.25° grid
     lons = np.arange(-179.875, 180.0, 0.25)
@@ -78,7 +79,8 @@ def main():
     
     # save outputs
     for ext in ('png','pdf'):
-        fig.savefig(f"example.{ext}", dpi=300, bbox_inches='tight')
+        print(f"save plot/example.{ext}")
+        fig.savefig(f"plot/example.{ext}", dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 if __name__ == "__main__":
