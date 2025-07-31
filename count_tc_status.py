@@ -10,7 +10,6 @@ $ python count_tc_status.py /path/to/a/directory
 """
 import sys
 from pathlib import Path
-import re
 from collections import Counter
 from read_hurricane_data import read_hurricane_data
 
